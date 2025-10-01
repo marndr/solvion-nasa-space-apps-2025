@@ -32,7 +32,7 @@ Our project focuses on:
   🔗 https://power.larc.nasa.gov/  
 
 - ☁️ **MeteoSwiss Open Data** – Hourly/daily weather observations & forecasts  
-  🔗 https://opendata.swiss/en/organization/meteoswiss  
+  🔗 https://opendata.swiss/de  
 
 - 🌡 **MeteoSwiss API** – Real-time forecast weather data  
   🔗 https://www.meteoswiss.admin.ch/services-and-publications/applications/meteoswiss-app.html  
