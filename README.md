@@ -24,9 +24,33 @@ Our project focuses on:
 ## 🛠️ Tech Stack
 - **Languages:** Python
 - **Libraries:** Pandas, Xarray, Matplotlib, Streamlit  
-- **Data Sources:**  
+
     
+## 📊 Data Sources
+
+- 🌍 **NASA POWER Data Access** – Solar & meteorological data  
+  🔗 https://power.larc.nasa.gov/  
+
+- ☁️ **MeteoSwiss Open Data** – Hourly/daily weather observations & forecasts  
+  🔗 https://opendata.swiss/en/organization/meteoswiss  
+
+- 🌡 **MeteoSwiss API** – Real-time forecast weather data  
+  🔗 https://www.meteoswiss.admin.ch/services-and-publications/applications/meteoswiss-app.html  
+
+- 🌐 **Copernicus Climate Data Store** – Reanalysis, seasonal forecasts, ERA5 datasets  
+  🔗 https://cds.climate.copernicus.eu/  
+
+- ⚡ **Swissgrid Transparency Platform** – Load, production, and balancing data for Switzerland  
+  🔗 https://www.swissgrid.ch/en/home/operation/grid-data/transparency.html  
+
+- 🔧 **pvlib-python** – Solar power modeling based on weather forecasts  
+  🔗 https://pvlib-python.readthedocs.io/  
 
 ---
 
 ## 📂 Project Structure
+
+
+## 🧾 License
+This project is licensed under the **MIT License**.
+
