@@ -22,11 +22,10 @@ Our project focuses on:
 ---
 
 ## 🛠️ Tech Stack
-- **Languages:** Python, JavaScript  
+- **Languages:** Python
 - **Libraries:** Pandas, Xarray, Matplotlib, Streamlit  
 - **Data Sources:**  
-  - [NASA POWER API](https://power.larc.nasa.gov/)  
-  - [NASA Open Data Portal](https://data.nasa.gov/)  
+    
 
 ---
 
