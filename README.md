@@ -35,7 +35,7 @@ Our project focuses on:
   🔗 https://opendata.swiss/de  
 
 - 🌡 **MeteoSwiss API** – Real-time forecast weather data  
-  🔗 https://www.meteoswiss.admin.ch/services-and-publications/applications/meteoswiss-app.html  
+  🔗 https://opendata.swiss/de  
 
 - 🌐 **Copernicus Climate Data Store** – Reanalysis, seasonal forecasts, ERA5 datasets  
   🔗 https://cds.climate.copernicus.eu/  
