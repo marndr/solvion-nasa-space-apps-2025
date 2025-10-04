@@ -23,7 +23,7 @@ Our project focuses on:
 
 ## 🛠️ Tech Stack
 - **Languages:** Python
-- **Libraries:** Pandas, Xarray, Matplotlib, Streamlit  
+- **Libraries:** Pandas, Xarray, Matplotlib, Streamlit, PyTorch
 
     
 ## 📊 Data Sources
@@ -47,6 +47,14 @@ Our project focuses on:
   🔗 https://pvlib-python.readthedocs.io/  
 
 ---
+
+## Project Setup
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
 ## 📂 Project Structure
 
