@@ -131,6 +131,80 @@ jupyter notebook.ipynb    # or jupyter-lab notebook.ipynb
 
 # Models
 
+## Daily Aggregation Model (Random Forest)
+
+This model predicts **daily national PV production** (and optionally **electricity consumption**)  
+using **daily aggregated weather features** and simple calendar variables.  
+It provides a strong baseline using easily interpretable, non-sequential features.
+
+### Approach
+
+- We aggregate **hourly weather data** into **daily summaries**:
+  - **Sum** and **mean** of solar radiation
+  - **Min**, **max**, **mean** of temperature
+  - **Mean** of humidity, wind speed, cloud cover
+  - **Sum** of precipitation
+- We also add **calendar features**:
+  - **Month**, **day of week**, and **weekend flag**
+- Optionally, we join **daily national consumption** for multi-target analysis.
+
+### Target
+
+The primary target is:
+- `pv_production_gwh`: **Daily photovoltaic production** (in GWh)
+
+Optionally:
+- `national_consumption_gwh`: **Daily electricity consumption**
+
+### Model
+
+- We use a **Random Forest Regressor** (300 trees) to map aggregated weather features  
+  to daily PV production (and/or consumption).
+- Missing data are imputed using **median values** via a `SimpleImputer`.
+
+#### Input features
+- Aggregated weather statistics (radiation, temperature, humidity, etc.)
+- Calendar features (month, day of week, weekend)
+
+#### Output
+- Predicted **daily PV generation** in GWh
+
+#### Training & Evaluation
+
+- Data is split **chronologically**: 80% train / 20% validation  
+  (no shuffling, to preserve time ordering)
+- Metrics:
+  - **MAE** (Mean Absolute Error)
+  - **R²** (Coefficient of Determination)
+
+- Validation predictions are plotted against actual daily values.
+
+### Advantages
+
+- **Simple and interpretable**
+- Requires only **daily aggregated weather data**
+- Fast to train and easy to deploy
+- Serves as a strong **baseline** for more complex temporal models (MLP, LSTM)
+
+### Limitations
+
+- Ignores **hourly dynamics** (e.g., cloud cover timing)
+- Cannot capture **temporal dependencies** beyond daily summaries
+- May underperform during **rapidly changing weather patterns**
+
+---
+
+### Results
+
+Below are the validation results from the **Daily Aggregation Model model**:
+
+#### Daily PV prediction (time series)
+![PV Prediction LSTM v1](reports/PV_prediction_RF_v1.png)
+
+#### Predicted vs Actual (scatter plot)
+![PV Prediction LSTM v2](reports/PV_prediction_RF_v2.png)
+
+
 ## Weak Supervision Model (LSTM)
 
 This model estimates **daily national PV production** using **hourly weather data** from multiple locations, without access to hourly PV labels.  
