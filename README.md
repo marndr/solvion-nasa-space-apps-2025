@@ -119,6 +119,15 @@ pip install -r requirements.txt
 
 - **`dashboard/`** – Interactive dashboard for region & date-based PV prediction.
 
+## 🚀 How to Run the Notebook
+
+To explore data, train models, and view results interactively, launch **Jupyter Notebook**:
+
+```bash
+
+# launch Jupyter
+jupyter notebook.ipynb    # or jupyter-lab notebook.ipynb
+```
 
 ## Fetch weather data, train and test models
 ```
