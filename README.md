@@ -59,6 +59,12 @@ pip install -r requirements.txt
 ## 📂 Project Structure
 
 
+## Use Interactive Dashboard
+```
+pip install streamlit streamlit-folium folium meteomatics pandas numpy scikit-learn python-dotenv joblib
+streamlit run dashboard/app.py
+```
+
 ## 🧾 License
 This project is licensed under the **MIT License**.
 
