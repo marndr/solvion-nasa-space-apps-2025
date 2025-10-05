@@ -198,11 +198,55 @@ Optionally:
 
 Below are the validation results from the **Daily Aggregation Model model**:
 
-#### Daily PV prediction (time series)
-![PV Prediction LSTM v1](reports/PV_prediction_RF_v1.png)
+#### Daily PV prediction (aggregated weather data)
+![PV Prediction RF v1](reports/PV_prediction_RF_v1.png)
 
 #### Predicted vs Actual (scatter plot)
-![PV Prediction LSTM v2](reports/PV_prediction_RF_v2.png)
+![PV Prediction RF v2](reports/PV_prediction_RF_v2.png)
+
+
+## Weak Supervision Model (MLP)
+
+This model estimates **daily national PV production** using **hourly weather data** from multiple locations.  
+We don’t have hourly PV labels, so the model learns indirectly by matching the **sum of hourly predictions** to the **daily observed PV total**.
+
+### Approach
+
+- Each training sample represents a **(location, hour)** pair.
+- The input features are the **previous _n_ hours** of weather data (e.g. radiation, temperature, humidity, wind, etc.).
+- A simple **MLP** predicts an intermediate hourly PV value.
+- For each day, all predicted hourly values across all locations are **summed** to get the model’s **daily PV estimate**.
+
+The model is trained so that this daily sum matches the actual **national daily PV production**.
+
+### Loss
+
+We use the **Huber loss** between the predicted and actual daily totals.  
+It behaves like MSE for small errors but is less sensitive to outliers (days with unusual production).
+
+### What the model learns
+
+- The relationship between weather and PV generation.
+- How to assign importance to time features (hour of day, day of year).
+- How different weather conditions contribute to total daily PV, even without hourly ground truth.
+
+### Why this setup
+
+- We only need **daily PV data**, which is much easier to get.
+- The model can still learn meaningful hourly patterns through **weak supervision**.
+- Simple, scalable, and can be extended later with more advanced models.
+
+---
+
+### Results
+
+Below are the validation results from the **LSTM-based weak supervision model**:
+
+#### Daily PV prediction (time series)
+![PV Prediction MLP v1](reports/PV_prediction_MLP_v1.png)
+
+#### Predicted vs Actual (scatter plot)
+![PV Prediction MLP v2](reports/PV_prediction_MLP_v2.png)
 
 
 ## Weak Supervision Model (LSTM)
