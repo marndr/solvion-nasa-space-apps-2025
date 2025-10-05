@@ -57,6 +57,7 @@ pip install -r requirements.txt
 ```
 
 ## 📂 Project Structure
+```bash
 .
 ├── dashboard/
 │   └── app.py                         # Interactive dashboard (map + calendar) for PV prediction
