@@ -58,6 +58,12 @@ pip install -r requirements.txt
 
 ## 📂 Project Structure
 
+## Fetch weather data, train and test models
+```
+python3 scripts/fetch_weather.py
+python3 scripts/train_models.py 
+python3 scripts/test_models.py 
+```
 
 ## Use Interactive Dashboard
 ```
