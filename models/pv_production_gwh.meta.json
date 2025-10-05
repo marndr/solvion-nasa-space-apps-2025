@@ -1,0 +1,24 @@
+{
+  "target": "pv_production_gwh",
+  "feature_columns": [
+    "global_rad:W_sum",
+    "global_rad:W_mean",
+    "t_2m:C_min",
+    "t_2m:C_max",
+    "t_2m:C_mean",
+    "relative_humidity_2m:p_mean",
+    "wind_speed_10m:ms_mean",
+    "precip_1h:mm_sum",
+    "snow_depth:cm_mean",
+    "effective_cloud_cover:octas_mean",
+    "month",
+    "dow",
+    "is_weekend",
+    "end_consumption_gwh"
+  ],
+  "val_start_date": "2017-10-21",
+  "val_fraction": 0.2,
+  "n_estimators": 300,
+  "random_state": 42,
+  "n_samples": 366
+}
