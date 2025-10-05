@@ -100,7 +100,7 @@ pip install -r requirements.txt
     ├── model.py                       # Model definitions (MLP, LSTM, etc.)
     ├── train.py                       # Training pipeline
     └── weather_core.py                # Weather data handling and preprocessing
-
+```
 
 ### 🗂️ Folder Summary
 
