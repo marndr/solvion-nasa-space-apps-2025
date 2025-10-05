@@ -65,6 +65,58 @@ python3 scripts/train_models.py
 python3 scripts/test_models.py 
 ```
 
+# Weak Supervision Model (LSTM)
+
+This model estimates **daily national PV production** using **hourly weather data** from multiple locations, without access to hourly PV labels.  
+It learns by ensuring that the **sum of its hourly predictions** matches the **observed daily PV total**.
+
+## Approach
+
+- Each training sample represents a **(location, hour)** pair.  
+- The input is a **sequence** of weather features from the **previous _n_ hours**  
+  (e.g. radiation, temperature, humidity, wind, etc.).  
+- A **lightweight LSTM** processes each sequence and outputs an intermediate **hourly PV estimate**.  
+- For each day, all hourly predictions across all locations are **summed** to form the model’s **daily PV estimate**.
+
+Training minimizes the difference between this **daily estimate** and the **actual national PV total**.
+
+## Loss
+
+We use the **Huber loss** between the predicted and actual daily PV.  
+It behaves like MSE for small errors but is **less sensitive to outliers**,  
+making training more stable on days with unusual production patterns.
+
+## What the model learns
+
+- **Temporal dependencies**: how PV generation depends on recent weather history.  
+- **Feature dynamics**: the impact of short-term trends in radiation, clouds, and temperature.  
+- **Aggregate behavior**: how local and hourly conditions combine to produce national daily output.
+
+## Why use LSTM
+
+- Captures **time dependencies** across consecutive hours, which MLPs ignore.  
+- Learns smooth temporal representations that reflect real-world PV dynamics.  
+- Still trained with only **daily PV totals**, preserving the **weak supervision** setup.
+
+## Benefits
+
+- Requires **only daily PV data** — much easier to obtain than hourly data.  
+- More expressive than a simple MLP due to **sequence modeling**.  
+- Can be extended for **forecasting** or integrated with **spatial attention** mechanisms.
+
+---
+
+## Results
+
+Below are the validation results from the **LSTM-based weak supervision model**:
+
+### Daily PV prediction (time series)
+![PV Prediction LSTM v1](reports/PV_prediction_LSTM_v1.png)
+
+### Predicted vs Actual (scatter plot)
+![PV Prediction LSTM v2](reports/PV_prediction_LSTM_v2.png)
+
+
 ## Use Interactive Dashboard
 ```
 pip install streamlit streamlit-folium folium meteomatics pandas numpy scikit-learn python-dotenv joblib
