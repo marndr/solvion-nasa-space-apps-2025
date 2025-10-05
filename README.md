@@ -57,6 +57,67 @@ pip install -r requirements.txt
 ```
 
 ## 📂 Project Structure
+.
+├── dashboard/
+│   └── app.py                         # Interactive dashboard (map + calendar) for PV prediction
+│
+├── data/
+│   └── raw/                           # Raw input data
+│       ├── ogd103_stromverbrauch_swissgrid_lv_und_endv.csv   # Energy consumption
+│       └── ogd104_stromproduktion_swissgrid.csv              # PV production
+│
+├── LICENSE                            # MIT License
+│
+├── models/                            # Saved trained models and metadata
+│   ├── national_consumption_gwh.joblib
+│   ├── national_consumption_gwh.meta.json
+│   ├── pv_production_gwh.joblib
+│   └── pv_production_gwh.meta.json
+│
+├── notebook.ipynb                     # 🧠 **Main notebook — data, modeling, and results**
+│
+├── README.md                          # Project documentation
+│
+├── reports/                           # 📊 Model outputs, predictions, and evaluation plots
+│   ├── national_consumption_gwh_predictions.csv
+│   ├── national_consumption_gwh_pred_vs_actual.png
+│   ├── PV_prediction_LSTM_v1.png
+│   ├── PV_prediction_LSTM_v2.png
+│   ├── pv_production_gwh_predictions.csv
+│   └── pv_production_gwh_pred_vs_actual.png
+│
+├── requirements.txt                   # Python dependencies
+│
+├── scripts/                           # Utility scripts
+│   ├── fetch_weather.py               # Fetch hourly weather data
+│   ├── test_models.py                 # Evaluate saved models
+│   └── train_models.py                # Train new models
+│
+├── SolvionPresentation.pptx           # 🎯 Presentation slides
+│
+└── src/                               # Core source code
+    ├── model.py                       # Model definitions (MLP, LSTM, etc.)
+    ├── train.py                       # Training pipeline
+    └── weather_core.py                # Weather data handling and preprocessing
+
+
+### 🗂️ Folder Summary
+
+- **`notebook.ipynb`** – 🧠 **Main notebook for running all experiments** *(data → model → results)*.  
+  Contains the **full workflow**: data loading, preprocessing, model training, and evaluation.
+
+- **`data/raw/`** – Raw datasets (PV production, energy consumption).
+
+- **`models/`** – Trained models and metadata files.
+
+- **`reports/`** – Prediction CSVs and evaluation plots.
+
+- **`scripts/`** – Standalone scripts for fetching data and training/testing models.
+
+- **`src/`** – Core logic (model classes, training functions, data utilities).
+
+- **`dashboard/`** – Interactive dashboard for region & date-based PV prediction.
+
 
 ## Fetch weather data, train and test models
 ```
