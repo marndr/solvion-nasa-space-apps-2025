@@ -7,10 +7,10 @@ class InputEmbeddings(nn.Module):
         super().__init__()
         self.d_model = d_model              # <-- number of embeddings
         self.dim = dim                      # <-- dimension of embeddings
-        self.embedding = nn.Embedding(d_model, dim)
+        self.linear = nn.Linear(d_model, dim)
 
     def forward(self, x):
-        return self.embedding(x) * math.sqrt(self.d_model)
+        return self.linear(x) * math.sqrt(self.d_model)
     
 class PositionalEncoding(nn.Module):
     def __init__(self, d_model: int, seq_len: int, dropout_rate: float):
@@ -38,8 +38,8 @@ class LayerNormalization(nn.Module):
     def __init__(self, eps: float = 10 ** -6):
         super().__init__()
         self.eps = eps
-        self.alpha = nn.Parameter(torch.ones(1))
-        self.bias = nn.Paramter(torch.ones(1))
+        self.alpha = nn.Parameter(torch.zeros(1))
+        self.bias = nn.Parameter(torch.zeros(1))
 
     def forward(self, x):
         mean = x.mean(dim = -1, keepdim = True)
@@ -140,7 +140,7 @@ class DecoderBlock(nn.Module):
         self.self_attention_block = self_attention_block
         self.cross_attention_block = cross_attention_block
         self.feed_forward_block = feed_forward_block
-        self.residual_connections = nn.Module([ResidualConnection(dropout_rate) for _ in range(3)])
+        self.residual_connections = nn.ModuleList([ResidualConnection(dropout_rate) for _ in range(3)])
 
     def forward(self, x, encoder_output, src_mask, tgt_mask):
         x = self.residual_connections[0](x, lambda x: self.self_attention_block(x, x, x, tgt_mask))
@@ -231,7 +231,7 @@ def build_transformer(src_dim: int, tgt_dim: int, src_seq_len: int, tgt_seq_len,
         decoder_blocks.append(decoder_block)
 
     encoder = Encoder(nn.ModuleList(encoder_blocks))
-    decoder = Decoder(nn.ModuleLIst(decoder_block))
+    decoder = Decoder(nn.ModuleList(decoder_blocks))
 
     projection_layer = ProjectionLayer(d_model, tgt_dim)
 
