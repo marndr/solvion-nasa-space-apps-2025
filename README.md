@@ -1,11 +1,11 @@
-# 🌞 Solvion — NASA Space Apps Challenge 2025
+# 🌞 Solvion — NASA Space Apps Challenge 2025 -- 🏆 *People’s Choice Award Winner (Zurich 2025)*
 
 **Project Name:** Solar Energy Solution  
 **Team:** Solvion  
 **Challenge:** #2 – Solar Energy  
 **Location:** Switzerland 🇨🇭  
 **Event:** NASA Space Apps Challenge 2025  
-
+**Award:** 🏆 *People’s Choice Award Winner – Zurich 2025*  
 ---
 
 ## 🚀 Goal
