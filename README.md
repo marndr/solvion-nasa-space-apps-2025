@@ -240,7 +240,7 @@ It behaves like MSE for small errors but is less sensitive to outliers (days wit
 
 ### Results
 
-Below are the validation results from the **LSTM-based weak supervision model**:
+Below are the validation results from the **MLP weak supervision model**:
 
 #### Daily PV prediction (time series)
 ![PV Prediction MLP v1](reports/PV_prediction_MLP_v1.png)
